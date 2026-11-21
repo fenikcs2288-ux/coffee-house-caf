@@ -76,7 +76,7 @@ export const MENU: MenuCategory[] = [
       { name: "Макарон полуниця м'ята", size: "50 г", price: 85 },
       { name: "Макарон фісташка-малина", size: "50 г", price: 85 },
       { name: "Американське печиво", size: "40 г", price: 60 },
-      { name: "Злаковий кейк", size: "100 г", price: null },
+      { name: "Злаковий кейк", size: "100 г", price: 95 },
     ],
   },
 ];
