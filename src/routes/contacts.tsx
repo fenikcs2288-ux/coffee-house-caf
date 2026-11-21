@@ -7,10 +7,10 @@ import { ADDRESS, EMAIL, HOURS, PHONE, PHONE_HREF } from "@/components/data";
 
 export const Route = createFileRoute("/contacts")({
   head: () => ({ meta: [
-    { title: "Контакты — Coffee House" },
-    { name: "description", content: "Адрес, телефон и часы работы кофейни Coffee House. Напишите нам через форму обратной связи." },
-    { property: "og:title", content: "Контакты — Coffee House" },
-    { property: "og:description", content: "Адрес, телефон и часы работы кофейни Coffee House." },
+    { title: "Контакты — Some Like It Hot" },
+    { name: "description", content: "Адрес, телефон и часы работы кофейни Some Like It Hot в Харькове. Напишите нам через форму обратной связи." },
+    { property: "og:title", content: "Контакты — Some Like It Hot" },
+    { property: "og:description", content: "Адрес, телефон и часы работы кофейни Some Like It Hot в Харькове." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
   ] }),
@@ -41,7 +41,7 @@ function Contacts() {
     setErrors(e);
     if (Object.keys(e).length) return;
     const body = encodeURIComponent(`${f.get("message")}\n\n— ${f.get("name")}, ${f.get("contact")}`);
-    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent("Сообщение с сайта Coffee House")}&body=${body}`;
+    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent("Сообщение с сайта Some Like It Hot")}&body=${body}`;
     setSent(true);
     form.reset();
   };

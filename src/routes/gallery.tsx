@@ -6,7 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { GALLERY } from "@/components/data";
 
 export const Route = createFileRoute("/gallery")({
-  head: () => ({ meta: [ { title: "Галерея — Coffee House" }, { name: "description", content: "Фотографии кофейни Coffee House: интерьер, напитки и атмосфера." }, { property: "og:title", content: "Галерея — Coffee House" }, { property: "og:description", content: "Фотографии кофейни Coffee House: интерьер, напитки и атмосфера." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" } ] }),
+  head: () => ({ meta: [ { title: "Галерея — Some Like It Hot" }, { name: "description", content: "Фотографии кофейни Some Like It Hot: интерьер, напитки и атмосфера." }, { property: "og:title", content: "Галерея — Some Like It Hot" }, { property: "og:description", content: "Фотографии кофейни Some Like It Hot: интерьер, напитки и атмосфера." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" } ] }),
   component: Gallery,
 });
 

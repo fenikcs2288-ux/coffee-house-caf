@@ -18,7 +18,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
           <Link to="/" className="flex items-center gap-2 font-display text-xl font-semibold text-primary sm:text-2xl">
-            <Coffee className="h-6 w-6" /> Coffee House
+            <Coffee className="h-6 w-6" /> Some Like It Hot
           </Link>
           <nav className="hidden gap-8 md:flex">
             {NAV.map((n) => (
@@ -43,7 +43,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <footer className="bg-espresso text-cream">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <Link to="/" className="flex items-center gap-2 font-display text-3xl"><Coffee className="h-6 w-6" /> Coffee House</Link>
+            <Link to="/" className="flex items-center gap-2 font-display text-3xl"><Coffee className="h-6 w-6" /> Some Like It Hot</Link>
             <p className="mt-4 text-sm leading-relaxed opacity-70">Свежеобжаренный кофе и тёплая атмосфера каждый день.</p>
           </div>
           <div>
@@ -66,7 +66,7 @@ export function Layout({ children }: { children: ReactNode }) {
             <Link to="/contacts" className="mt-5 inline-block rounded-full border border-cream/40 px-5 py-2 text-sm transition hover:bg-cream hover:text-espresso">Написать нам</Link>
           </div>
         </div>
-        <div className="border-t border-cream/15 px-5 py-5 text-center text-xs opacity-60">© {new Date().getFullYear()} Coffee House. Все права защищены.</div>
+        <div className="border-t border-cream/15 px-5 py-5 text-center text-xs opacity-60">© {new Date().getFullYear()} Some Like It Hot. Все права защищены.</div>
       </footer>
       <a href={PHONE_HREF} aria-label="Позвонить нам" className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 rounded-full bg-primary p-4 sm:px-5 sm:py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:scale-105">
         <Phone className="h-4 w-4" /><span className="hidden sm:inline">Связаться</span>
