@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Layout, PageTitle } from "@/components/Layout";
-import { Reveal } from "@/components/Reveal";
+import { DrinkCard } from "@/components/DrinkCard";
 import { DRINKS } from "@/components/data";
 
 export const Route = createFileRoute("/menu")({
@@ -12,18 +12,9 @@ function MenuPage() {
   return (
     <Layout>
       <PageTitle eyebrow="Наши напитки" title="Меню" />
-      <section className="mx-auto max-w-4xl px-5 py-20">
-        <div className="grid gap-x-16 gap-y-10 md:grid-cols-2">
-          {DRINKS.map((d, i) => (
-            <Reveal key={d.name} delay={(i % 2) * 120}>
-              <div className="flex items-baseline gap-3">
-                <h3 className="text-2xl text-primary">{d.name}</h3>
-                <span className="flex-1 border-b border-dashed" />
-                <span className="font-semibold">{d.price} ₴</span>
-              </div>
-              <p className="mt-1 text-sm text-muted-foreground">{d.desc}</p>
-            </Reveal>
-          ))}
+      <section className="mx-auto max-w-6xl px-5 py-16 md:py-20">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {DRINKS.map((d, i) => <DrinkCard key={d.name} d={d} delay={(i % 4) * 90} />)}
         </div>
         <p className="mt-16 text-center text-sm text-muted-foreground">Альтернативное молоко (овсяное, миндальное) — +15 ₴</p>
       </section>

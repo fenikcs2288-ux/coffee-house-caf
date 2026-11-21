@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
+import { DrinkCard } from "@/components/DrinkCard";
 import { Reveal } from "@/components/Reveal";
 import { DRINKS, HERO, HERO_OG, ABOUT_IMG } from "@/components/data";
 
@@ -16,7 +17,7 @@ function Index() {
         <div className="hero-overlay absolute inset-0" />
         <div className="relative z-10 max-w-2xl px-6 text-center text-cream">
           <p className="animate-fade-up text-xs uppercase tracking-[0.35em] opacity-90">С 2015 года</p>
-          <h1 className="animate-fade-up mt-4 text-6xl leading-none md:text-8xl" style={{ animationDelay: "120ms" }}>Coffee House</h1>
+          <h1 className="animate-fade-up mt-4 text-5xl leading-none sm:text-6xl md:text-8xl" style={{ animationDelay: "120ms" }}>Coffee House</h1>
           <p className="animate-fade-up mx-auto mt-6 max-w-md text-lg opacity-90" style={{ animationDelay: "240ms" }}>Кофе, сваренный с любовью. Место, куда хочется возвращаться.</p>
           <div className="animate-fade-up mt-10 flex flex-wrap justify-center gap-4" style={{ animationDelay: "360ms" }}>
             <Link to="/menu" className="rounded-full bg-cream px-8 py-3 font-semibold text-espresso transition hover:scale-105">Смотреть меню</Link>
@@ -31,15 +32,9 @@ function Index() {
           <h2 className="mt-3 text-5xl text-primary">Любимые напитки</h2>
         </Reveal>
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {DRINKS.slice(0, 4).map((d, i) => (
-            <Reveal key={d.name} delay={i * 100} className="rounded-xl bg-card p-6 shadow-soft transition hover:-translate-y-1">
-              <h3 className="text-2xl text-primary">{d.name}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{d.desc}</p>
-              <p className="mt-4 font-semibold">{d.price} ₴</p>
-            </Reveal>
-          ))}
+          {DRINKS.slice(0, 4).map((d, i) => <DrinkCard key={d.name} d={d} delay={i * 100} />)}
         </div>
-        <div className="mt-12 text-center"><Link to="/menu" className="rounded-full bg-primary px-8 py-3 font-semibold text-primary-foreground transition hover:opacity-90">Всё меню</Link></div>
+        <div className="mt-12 text-center"><Link to="/menu" className="rounded-full bg-primary px-8 py-3 font-semibold text-primary-foreground transition hover:-translate-y-0.5 hover:shadow-lift">Всё меню</Link></div>
       </section>
 
       <section className="bg-secondary">
