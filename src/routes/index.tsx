@@ -1,23 +1,57 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Layout } from "@/components/Layout";
+import { Reveal } from "@/components/Reveal";
+import { DRINKS, HERO, HERO_OG, ABOUT_IMG } from "@/components/data";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({ meta: [ { title: "Coffee House — кофейня specialty кофе" }, { name: "description", content: "Уютная кофейня Coffee House: свежеобжаренный кофе, авторские напитки и тёплая атмосфера." }, { property: "og:title", content: "Coffee House — кофейня specialty кофе" }, { property: "og:description", content: "Уютная кофейня Coffee House: свежеобжаренный кофе, авторские напитки и тёплая атмосфера." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }, { property: "og:image", content: HERO_OG }, { name: "twitter:image", content: HERO_OG } ] }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <Layout>
+      <section className="relative flex min-h-[88vh] items-center justify-center overflow-hidden">
+        <img src={HERO} alt="Чашка свежего кофе" className="absolute inset-0 h-full w-full scale-105 object-cover" />
+        <div className="hero-overlay absolute inset-0" />
+        <div className="relative z-10 max-w-2xl px-6 text-center text-cream">
+          <p className="animate-fade-up text-xs uppercase tracking-[0.35em] opacity-90">С 2015 года</p>
+          <h1 className="animate-fade-up mt-4 text-6xl leading-none md:text-8xl" style={{ animationDelay: "120ms" }}>Coffee House</h1>
+          <p className="animate-fade-up mx-auto mt-6 max-w-md text-lg opacity-90" style={{ animationDelay: "240ms" }}>Кофе, сваренный с любовью. Место, куда хочется возвращаться.</p>
+          <div className="animate-fade-up mt-10 flex flex-wrap justify-center gap-4" style={{ animationDelay: "360ms" }}>
+            <Link to="/menu" className="rounded-full bg-cream px-8 py-3 font-semibold text-espresso transition hover:scale-105">Смотреть меню</Link>
+            <Link to="/contacts" className="rounded-full border border-cream/70 px-8 py-3 font-semibold text-cream transition hover:bg-cream/10">Как нас найти</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-24">
+        <Reveal className="text-center">
+          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Популярное</p>
+          <h2 className="mt-3 text-5xl text-primary">Любимые напитки</h2>
+        </Reveal>
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {DRINKS.slice(0, 4).map((d, i) => (
+            <Reveal key={d.name} delay={i * 100} className="rounded-xl bg-card p-6 shadow-soft transition hover:-translate-y-1">
+              <h3 className="text-2xl text-primary">{d.name}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{d.desc}</p>
+              <p className="mt-4 font-semibold">{d.price} ₴</p>
+            </Reveal>
+          ))}
+        </div>
+        <div className="mt-12 text-center"><Link to="/menu" className="rounded-full bg-primary px-8 py-3 font-semibold text-primary-foreground transition hover:opacity-90">Всё меню</Link></div>
+      </section>
+
+      <section className="bg-secondary">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-24 md:grid-cols-2">
+          <Reveal><img src={ABOUT_IMG} alt="Интерьер кофейни" className="aspect-[4/5] w-full rounded-xl object-cover shadow-soft" loading="lazy" /></Reveal>
+          <Reveal delay={150}>
+            <h2 className="text-5xl text-primary">Больше, чем кофе</h2>
+            <p className="mt-6 leading-relaxed text-muted-foreground">Мы обжариваем зёрна небольшими партиями и готовим каждый напиток вручную. Coffee House — это тишина утра, тёплый свет и аромат свежей выпечки.</p>
+            <Link to="/about" className="mt-8 inline-block border-b-2 border-primary pb-1 font-semibold text-primary">Узнать о нас →</Link>
+          </Reveal>
+        </div>
+      </section>
+    </Layout>
   );
 }
